@@ -1,0 +1,20 @@
+INFO: [VRFC 10-2263] Analyzing Verilog file "G:/NextcloudDesktop/FDU/project/HW1/HW1.srcs/sources_1/new/ID.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module ID
+INFO: [VRFC 10-2263] Analyzing Verilog file "G:/NextcloudDesktop/FDU/project/HW1/HW1.srcs/sources_1/new/IMM_ADD.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module IMM_ADD
+INFO: [VRFC 10-2263] Analyzing Verilog file "G:/NextcloudDesktop/FDU/project/HW1/HW1.srcs/sources_1/new/MAC_ALU.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module MAC_ALU
+INFO: [VRFC 10-2263] Analyzing Verilog file "G:/NextcloudDesktop/FDU/project/HW1/HW1.srcs/sources_1/new/MUX2.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module MUX2
+INFO: [VRFC 10-2263] Analyzing Verilog file "G:/NextcloudDesktop/FDU/project/HW1/HW1.srcs/sources_1/new/MUX3.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module MUX3
+INFO: [VRFC 10-2263] Analyzing Verilog file "G:/NextcloudDesktop/FDU/project/HW1/HW1.srcs/sources_1/new/RISCV.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module RISCV
+INFO: [VRFC 10-2263] Analyzing Verilog file "G:/NextcloudDesktop/FDU/project/HW1/HW1.srcs/sources_1/new/dcmem.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module dcmem
+INFO: [VRFC 10-2263] Analyzing Verilog file "G:/NextcloudDesktop/FDU/project/HW1/HW1.srcs/sources_1/new/icmem.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module icmem
+INFO: [VRFC 10-2263] Analyzing Verilog file "G:/NextcloudDesktop/FDU/project/HW1/HW1.srcs/sources_1/new/regfile.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module regfile
+INFO: [VRFC 10-2263] Analyzing Verilog file "G:/NextcloudDesktop/FDU/project/HW1/HW1.srcs/sim_1/new/RISCV_tb.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module RISCV_tb
