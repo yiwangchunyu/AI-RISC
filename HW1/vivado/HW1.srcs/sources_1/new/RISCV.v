@@ -44,7 +44,7 @@ module RISCV(
 	wire	[1:0]	mux2;
 	wire 			mac_ce;
 	
-	
+    
 	icmem icmem_0(
 		.clk(clk),
 		.rst(rst),

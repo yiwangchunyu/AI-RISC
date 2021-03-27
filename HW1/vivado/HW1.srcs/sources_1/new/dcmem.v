@@ -40,7 +40,8 @@ module dcmem #(
 			RAM[addr]<=dataw;
 		end
 	end
-	assign datar = RAM[addr];
+
+    assign datar = RAM[addr];
 endmodule
 
 
