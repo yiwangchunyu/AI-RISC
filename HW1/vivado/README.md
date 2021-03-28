@@ -1,6 +1,6 @@
 1. **汇编代码：**
 
-   `.\vivado\HW1.srcs\sim_1\new\code.asm`可使用`.\vivado\HW1.srcs\sim_1\new\compile.py`将汇编代码翻译为二进制机器码，保存在inst_mem.txt中
+   `.\vivado\HW1.srcs\sim_1\new\code.asm`可使用`.\vivado\HW1.srcs\sim_1\new\compile.py`将汇编代码翻译为二进制机器码，保存在`inst_mem.txt`中
 
 2. **测试数据：**
 
