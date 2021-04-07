@@ -38,7 +38,7 @@ module ID#(
 	output reg                           funct,
 	output reg		     				 mux1,
 	output reg      [1:0]				 mux2,
-	output reg                           mac_ce
+	output reg                           macEn
     );
     
     always @ (*) begin
@@ -133,14 +133,14 @@ module ID#(
     end
     always @ (*) begin
         if(!rst) 
-			mac_ce<=1'b0;
+			macEn<=1'b0;
         else begin
 			casex(inst)
-				16'bxxxxxxxxxxxxx001: mac_ce<=1'b0; //load
-				16'bxxxxxxxxxxxxx010: mac_ce<=1'b0; //store
-				16'bxxxxxxxxxxxxx011: mac_ce<=1'b0; //mov
-				16'bxxxxxxxxxxxxx100: mac_ce<=1'b1; //mac
-				default: mac_ce<=1'b0;
+				16'bxxxxxxxxxxxxx001: macEn<=1'b0; //load
+				16'bxxxxxxxxxxxxx010: macEn<=1'b0; //store
+				16'bxxxxxxxxxxxxx011: macEn<=1'b0; //mov
+				16'bxxxxxxxxxxxxx100: macEn<=1'b1; //mac
+				default: macEn<=1'b0;
 			endcase
 		end
     end

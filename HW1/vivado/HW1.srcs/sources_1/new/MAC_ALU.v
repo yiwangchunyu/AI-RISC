@@ -23,7 +23,7 @@
 module MAC_ALU#(
 		parameter REG_DATA_WIDTH=16
 	)(
-		input funct, clk, ce,
+		input funct, clk, macEn,
 		input [REG_DATA_WIDTH-1:0] rs1,rs2,
 		output [REG_DATA_WIDTH-1:0] rd
     );
@@ -37,7 +37,7 @@ module MAC_ALU#(
 	assign rd	   = addend1+addend2;
 	
 	always@(posedge clk) begin
-		if(ce)
+		if(macEn)
             psum<=rd;
 	end
 endmodule

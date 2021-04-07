@@ -42,7 +42,7 @@ module RISCV(
 	wire			funct;
 	wire 			mux1;
 	wire	[1:0]	mux2;
-	wire 			mac_ce;
+	wire 			macEn;
 	
     
 	icmem icmem_0(
@@ -70,7 +70,7 @@ module RISCV(
 		.funct(funct),
 		.mux1(mux1),
 		.mux2(mux2),
-		.mac_ce(mac_ce)
+		.macEn(macEn)
 	);
 	regfile regfile_0(
 		.clk(clk),
@@ -91,7 +91,7 @@ module RISCV(
 	MAC_ALU mac_alu_0(
 		.clk(clk),
 		.funct(funct),
-		.ce(mac_ce),
+		.macEn(macEn),
 		.rs1(rs1_data),
 		.rs2(rs2_data),
 		.rd(mac_res)
