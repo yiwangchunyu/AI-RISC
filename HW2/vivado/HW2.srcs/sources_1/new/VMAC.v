@@ -28,9 +28,9 @@ module VMAC(
 			if(funct[2]==1'b1) begin 
 				for(i=0;i<4;i=i+1) begin
 					// shift 0, truncate, the lower 8 bit as output. overflow handling, remain sign bit
-					if((~psum[i][31]) && (psum[i]>31'b0000000000000000000000001111111))
+					if((~psum[i][31]) && (psum[i]>32'b0000000000000000000000001111111))
 						vrd[i*8+:8]=8'b01111111;
-					else if((psum[i][31]) && (psum[i]<31'b1111111111111111111111110000000))
+					else if((psum[i][31]) && (psum[i]<32'b1111111111111111111111110000000))
 						vrd[i*8+:8]=8'b10000000;
 					else
 						vrd[i*8+:8]=psum[i][7:0];
