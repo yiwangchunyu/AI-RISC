@@ -11,5 +11,5 @@
 * [Report](./HW1/20210860017_汪春雨_HW1.pdf)   
 
 ## Assignment 2:  Implement a matrix multiplier on a RISC Core   
-* [Assignment description]()   
-* [Report]()   
+* [Assignment description](./HW2/CAHW2_2020.pdf)   
+* [Report](./HW2/20210860017_汪春雨_HW2.pdf)   
