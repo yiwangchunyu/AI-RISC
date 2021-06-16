@@ -131,7 +131,7 @@ def train():
             train_loss+=loss
             net.backword(labels)
             net.step(lr_shrink)
-        #test
+        # test
         correct=0
         for i,(inputs,labels) in enumerate(test_Loader):
             outputs=net(inputs)
@@ -139,6 +139,8 @@ def train():
             test_loss+=loss
             preds = np.argmax(outputs,axis=1)
             correct += (preds==labels).sum()
+
+        # logging...
         train_loss/=train_Loader.length
         test_loss/=test_Loader.length
         train_losses.append(train_loss)
@@ -157,18 +159,22 @@ def train():
     #plot
     fig = plt.figure()
     ax1 = fig.add_subplot(111)
-    plot11=ax1.plot(np.arange(0,len(train_losses)),train_losses,linewidth = '2',label='TrainLoss')
-    plot12=ax1.plot(np.arange(0, len(test_losses)), test_losses,linewidth = '2',linestyle='--', label='TestLoss')
+    plot11=ax1.plot(np.arange(0,len(train_losses)),train_losses
+                    ,linewidth = '2',label='TrainLoss')
+    plot12=ax1.plot(np.arange(0, len(test_losses)), test_losses
+                    ,linewidth = '2',linestyle='--', label='TestLoss')
     ax1.set_xlabel('Epoch')
     ax1.set_ylabel('Loss')
 
     ax2 = ax1.twinx()
-    plot2=ax2.plot(np.arange(0, len(accs)), accs,color='g',linewidth = '2',linestyle='-', label='Accuracy')
+    plot2=ax2.plot(np.arange(0, len(accs)), accs
+                   ,color='g',linewidth = '2',linestyle='-', label='Accuracy')
     ax2.set_ylabel('Accuracy')
     ax2.set_ylim(0,1)
     y_major_locator = MultipleLocator(0.1)
     ax2.yaxis.set_major_locator(y_major_locator)
-    ax2.annotate('%f'%(best_acc),(pos,best_acc),xytext=(n_epoch*0.8,0.8),weight='heavy',color='g',
+    ax2.annotate('%f'%(best_acc),(pos,best_acc)
+                 ,xytext=(n_epoch*0.8,0.8),weight='heavy',color='g',
                  arrowprops=dict(arrowstyle='->'))
     ax2.scatter(pos,best_acc,color='r',marker='^')
     lines=plot11+plot12+plot2
