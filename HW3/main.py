@@ -103,12 +103,13 @@ class Net():
             self.grad_b0 = self.grad_g.copy()
 
     # update params (gradient descent)
-    def step(self):
-        self.W0=self.W0-self.lr*self.grad_W0
-        self.W1 = self.W1 - self.lr * self.grad_W1
+    def step(self, lr_shrink=1):
+        lr=lr_shrink*self.lr
+        self.W0=self.W0-lr*self.grad_W0
+        self.W1 = self.W1 - lr * self.grad_W1
         if self.bias:
-            self.b0=self.b0-self.lr*self.b0
-            self.b1 = self.b1 - self.lr * self.b1
+            self.b0=self.b0-lr*self.b0
+            self.b1 = self.b1 - lr * self.b1
 
     def __call__(self, x):
         return self.forword(x)
@@ -117,20 +118,19 @@ def train():
     train_Loader=DataLoader()
     test_Loader = DataLoader(train=False)
     net=Net()
-    train_losses=[]
-    test_losses=[]
-    accs=[]
-    best_acc=0
-    pos=0
-    for epoch in range(200):
-        train_loss=0
-        test_loss = 0
+    train_losses,test_losses=[],[]
+    pos,best_acc,accs=0,0,[]
+    lr_shrink = 1
+    for epoch in range(n_epoch):
+        train_loss,test_loss=0,0
+        if (epoch+1)%100==0:
+            lr_shrink*=0.5
         for i,(inputs,labels) in enumerate(train_Loader):
             outputs=net(inputs)
             loss=net.loss(outputs,labels)
             train_loss+=loss
             net.backword(labels)
-            net.step()
+            net.step(lr_shrink)
         #test
         correct=0
         for i,(inputs,labels) in enumerate(test_Loader):
@@ -168,7 +168,7 @@ def train():
     ax2.set_ylim(0,1)
     y_major_locator = MultipleLocator(0.1)
     ax2.yaxis.set_major_locator(y_major_locator)
-    ax2.annotate('%f'%(best_acc),(pos,best_acc),xytext=(150,0.8),weight='heavy',color='g',
+    ax2.annotate('%f'%(best_acc),(pos,best_acc),xytext=(n_epoch*0.8,0.8),weight='heavy',color='g',
                  arrowprops=dict(arrowstyle='->'))
     ax2.scatter(pos,best_acc,color='r',marker='^')
     lines=plot11+plot12+plot2
@@ -176,6 +176,6 @@ def train():
     plt.savefig('loss.pdf', dpi=300)
     plt.show()
 
-
+n_epoch=400
 if __name__=="__main__":
     train()
