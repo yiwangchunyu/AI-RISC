@@ -2,9 +2,19 @@ import numpy as np
 import matplotlib.pyplot as plt
 from matplotlib.ticker import MultipleLocator
 
+def ReLU(x):
+    return np.maximum(x,0)
+
+#The derivative of ReLU
+def ReLU_d(y):
+    return np.where(y > 0, 1, y)
 
 def sigmoid(x):
     return 1/(1+np.exp(-x))
+
+#The derivative of sigmoid
+def sigmoid_d(y):
+    return y*(1-y)
 
 def softmax(z):
     t = np.exp(z)
@@ -57,7 +67,7 @@ class DataLoader():
 
 
 class Net():
-    def __init__(self, input_size=8, hidden_size=32, bias=True, num_class=4, lr = 1):
+    def __init__(self, input_size=8, hidden_size=32, bias=True, num_class=4, lr = None, act='sigmoid'):
         self.hidden_size = hidden_size
         self.input_size=input_size
         self.num_class=num_class
@@ -72,7 +82,18 @@ class Net():
         # self.b1=np.zeros((1,self.num_class))
         self.b0 = np.random.rand(1, self.hidden_size)
         self.b1 = np.random.rand(1, self.num_class)
-        self.activate=sigmoid
+        if act=='sigmoid':
+            self.activate=sigmoid
+            self.activate_d = sigmoid_d
+            if not self.lr:
+                self.lr=1.0
+        elif act=='relu':
+            self.activate = ReLU
+            self.activate_d = ReLU_d
+            if not self.lr:
+                self.lr=1e-1
+        else:
+            exit(-1)
 
     # compute cross entropy loss
     def loss(self,a,y,reduction='mean'):
@@ -96,7 +117,7 @@ class Net():
         self.grad_z=self.a-self.y
         self.grad_W1=self.g_act.T.dot(self.grad_z)/self.x.shape[0]
         self.grad_g_act=self.grad_z.dot(self.W1.T)
-        self.grad_g=self.g_act*(1-self.g_act)*self.grad_g_act
+        self.grad_g=self.activate_d(self.g_act)*self.grad_g_act
         self.grad_W0=self.x.T.dot(self.grad_g)/self.x.shape[0]
         if self.bias:
             self.grad_b1=self.grad_z.copy()
