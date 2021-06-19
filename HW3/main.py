@@ -6,15 +6,15 @@ def ReLU(x):
     return np.maximum(x,0)
 
 #The derivative of ReLU
-def ReLU_d(y):
-    return np.where(y > 0, 1, y)
+def ReLU_d(x):
+    return np.where(x > 0, 1, 0)
 
 def sigmoid(x):
     return 1/(1+np.exp(-x))
 
 #The derivative of sigmoid
-def sigmoid_d(y):
-    return y*(1-y)
+def sigmoid_d(x):
+    return sigmoid(x)*(1-sigmoid(x))
 
 def softmax(z):
     t = np.exp(z)
@@ -117,7 +117,7 @@ class Net():
         self.grad_z=self.a-self.y
         self.grad_W1=self.g_act.T.dot(self.grad_z)/self.x.shape[0]
         self.grad_g_act=self.grad_z.dot(self.W1.T)
-        self.grad_g=self.activate_d(self.g_act)*self.grad_g_act
+        self.grad_g=self.activate_d(self.g)*self.grad_g_act
         self.grad_W0=self.x.T.dot(self.grad_g)/self.x.shape[0]
         if self.bias:
             self.grad_b1=self.grad_z.copy()
