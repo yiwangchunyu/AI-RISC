@@ -13,3 +13,8 @@
 ## Assignment 2:  Implement a matrix multiplier on a RISC Core   
 * [Assignment description](./HW2/CAHW2_2020.pdf)   
 * [Report](./HW2/20210860017_汪春雨_HW2.pdf)   
+
+## Assignment 3:  Gradient Computing & Training a two-layer neural network using Numpy   
+* [Assignment description](./HW3/CAHW3_2020.pdf)   
+* [Report](./HW3/20210860017_汪春雨_HW3.pdf)   
+
